@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0.1",
         "laravel/framework": "5.2.*",
         "mpt/server": "dev-master",
         "mpt/jakim": "dev-master"

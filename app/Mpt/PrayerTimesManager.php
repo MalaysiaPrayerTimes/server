@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Mpt;
 
@@ -6,6 +7,7 @@ use Cache;
 use Mpt\Exception\InvalidCodeException;
 use Mpt\Jakim\JakimPrayerData;
 use Mpt\Jakim\JakimProvider;
+use Mpt\PrayerData;
 
 class PrayerTimesManager
 {
@@ -21,22 +23,22 @@ class PrayerTimesManager
         $this->lastModified = new \DateTime();
     }
 
-    public function getUsedProviderName()
+    public function getUsedProviderName(): string
     {
         return $this->usedProvider;
     }
 
-    public function getLastModified()
+    public function getLastModified(): \DateTime
     {
         return $this->lastModified;
     }
 
-    public function getCodeByCoordinates($lat, $lng, $acc = 0)
+    public function getCodeByCoordinates(float $lat, float $lng, int $acc = 0): string
     {
         // TODO: Implement getCodeByCoordinates() method.
     }
 
-    public function getTimesByCode($code)
+    public function getTimesByCode(string $code): PrayerData
     {
         $cache = $this->getCachedTimes($code);
 
@@ -63,19 +65,19 @@ class PrayerTimesManager
         throw new InvalidCodeException();
     }
 
-    private function getCacheId($code)
+    private function getCacheId(string $code): string
     {
         $y = $this->getYear();
         $m = $this->getMonth();
         return "$code-$y-$m";
     }
 
-    private function getCachedTimes($code)
+    private function getCachedTimes(string $code): CacheInfo
     {
         return Cache::get($this->getCacheId($code));
     }
 
-    private function saveTimesIntoCache($code, $times)
+    private function saveTimesIntoCache(string $code, PrayerData $times)
     {
         $cache = new CacheInfo($this->usedProvider, $times, new \DateTime());
         Cache::forever($this->getCacheId($code), $cache);

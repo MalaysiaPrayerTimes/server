@@ -821,12 +821,12 @@
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:i906/mpt-jakim.git",
-                "reference": "4b36b26fb4d9fd14bd8450fa6b63e1d465e71fec"
+                "reference": "a2183c210c397064682316f46993fce437ff4172"
             },
             "require": {
                 "fabpot/goutte": "~3.1",
                 "mpt/server": "dev-master",
-                "php": ">=5.5.9"
+                "php": ">=7.0.1"
             },
             "type": "library",
             "autoload": {
@@ -834,7 +834,7 @@
                     "Mpt\\": "src/Mpt"
                 }
             },
-            "time": "2016-01-02 06:13:23"
+            "time": "2016-01-02 11:45:03"
         },
         {
             "name": "mpt/server",
@@ -842,10 +842,10 @@
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:i906/mpt-server.git",
-                "reference": "5282334c6ba45e59060d03c6c9ab5c581bf4363e"
+                "reference": "e6e51738a45477f9c2fced195ec1a3b00cf8d2a6"
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=7.0.1"
             },
             "type": "library",
             "autoload": {
@@ -853,7 +853,7 @@
                     "Mpt\\": "src/Mpt"
                 }
             },
-            "time": "2016-01-02 06:07:00"
+            "time": "2016-01-02 11:45:13"
         },
         {
             "name": "mtdowling/cron-expression",
