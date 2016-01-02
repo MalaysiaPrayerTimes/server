@@ -4,9 +4,21 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:i906/mpt-server.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:i906/mpt-jakim.git"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "mpt/server": "dev-master",
+        "mpt/jakim": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -20,7 +32,8 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Mpt\\": "app/Mpt/"
         }
     },
     "autoload-dev": {
