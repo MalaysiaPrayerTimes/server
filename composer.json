@@ -1,24 +1,16 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "mpt/server",
     "type": "project",
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@bitbucket.org:i906/mpt-server.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:i906/mpt-jakim.git"
+            "url": "https://github.com/MalaysiaPrayerTimes/provider"
         }
     ],
     "require": {
-        "php": ">=7.0.1",
+        "barryvdh/laravel-ide-helper": "~2.1",
         "laravel/framework": "5.2.*",
-        "mpt/server": "dev-master",
-        "mpt/jakim": "dev-master"
+        "mpt/provider": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -32,8 +24,7 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "Mpt\\": "app/Mpt/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
@@ -49,13 +40,16 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
     },
