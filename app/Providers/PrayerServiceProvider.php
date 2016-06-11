@@ -9,6 +9,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Ivory\HttpAdapter\CurlHttpAdapter;
 use League\Geotools\Geotools;
+use Mpt\DatabaseCache;
 use Mpt\Provider;
 use Mpt\Providers\Jakim\JakimProvider;
 
@@ -35,6 +36,7 @@ class PrayerServiceProvider extends ServiceProvider
             $geotools = new Geotools();
             $geocoder = new ProviderAggregator();
             $goutte = new Client();
+            $cache = $app->make(DatabaseCache::class);
 
             $geocoder->registerProviders([
                 new GoogleMaps($adapter, null, null, true, env('MAPS_API_KEY')),
@@ -44,6 +46,7 @@ class PrayerServiceProvider extends ServiceProvider
             
             $provider = new Provider();
             $provider->registerPrayerTimeProvider($jp);
+            $provider->setCache($cache);
 
             return $provider;
         });
