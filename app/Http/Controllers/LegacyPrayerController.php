@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Mpt\Exception\ConnectException;
 use Mpt\Exception\InvalidCodeException;
 use Mpt\Exception\InvalidDataException;
-use Mpt\PrayerTimesManager;
+use Mpt\Provider;
 
 class LegacyPrayerController extends Controller
 {
@@ -22,7 +22,7 @@ class LegacyPrayerController extends Controller
 
     private $manager;
 
-    public function __construct(PrayerTimesManager $manager)
+    public function __construct(Provider $manager)
     {
         $this->manager = $manager;
     }
@@ -31,11 +31,18 @@ class LegacyPrayerController extends Controller
     {
         $code = $request->input('code');
         $filter = $request->input('filter');
+        $month = $request->input('month');
+        $year = $request->input('year');
 
-        if (empty($code)) return $this->throwError(self::ERROR_NO_PLACE, 'No place code has been defined.');
+        if (empty($code)) {
+            return $this->throwError(self::ERROR_NO_PLACE, 'No place code has been defined.');
+        }
 
         try {
-            $data = $this->manager->getTimesByCode($code);
+            $data = $this->manager
+                ->setYear($year)
+                ->setMonth($month)
+                ->getTimesByCode($code);
         } catch (InvalidCodeException $e) {
             return $this->throwError(self::ERROR_NO_PLACE, "Unknown place code ($code) is used.");
         } catch (InvalidDataException $e) {
@@ -50,12 +57,14 @@ class LegacyPrayerController extends Controller
 
         if ($filter == self::FILTER_DAY) {
             $times = $data->getTimes()[date('j') - 1];
-        } else if ($filter == self::FILTER_WEEK) {
-            $f1 = date('w');
-            $f2 = date('j', strtotime("-$f1 days"));
-            $times = array_slice($data->getTimes(), $f2, 7);
         } else {
-            $times = $data->getTimes();
+            if ($filter == self::FILTER_WEEK) {
+                $f1 = date('w');
+                $f2 = date('j', strtotime("-$f1 days"));
+                $times = array_slice($data->getTimes(), $f2, 7);
+            } else {
+                $times = $data->getTimes();
+            }
         }
 
         $response = response()
@@ -64,7 +73,7 @@ class LegacyPrayerController extends Controller
                     'code' => 200
                 ],
                 'response' => [
-                    'provider' => $this->manager->getUsedProviderName(),
+                    'provider' => $data->getProviderName(),
                     'code' => $data->getCode(),
                     'origin' => $data->getOriginCode(),
                     'jakim' => $data->getJakimCode(),
@@ -73,7 +82,7 @@ class LegacyPrayerController extends Controller
                     'times' => $times
                 ]
             ])
-            ->setLastModified($this->manager->getLastModified());
+            ->setLastModified($data->getLastModified());
 
         $response->setEtag(md5($response->getContent()), true)
             ->isNotModified($request);

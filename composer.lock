@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0c872238b19573775eb1618086bf3914",
+    "hash": "aa12e0856110159631b8091adbdeeaf3",
     "content-hash": "74a281a90c04c55e4af1d30dc37e946e",
     "packages": [
         {
@@ -1083,12 +1083,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MalaysiaPrayerTimes/provider.git",
-                "reference": "76e1c23855bd965adc28c27450e993af21a5d5cd"
+                "reference": "79eff212bf3f79d448b4acecd23d8c180c8e8656"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/76e1c23855bd965adc28c27450e993af21a5d5cd",
-                "reference": "76e1c23855bd965adc28c27450e993af21a5d5cd",
+                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/79eff212bf3f79d448b4acecd23d8c180c8e8656",
+                "reference": "79eff212bf3f79d448b4acecd23d8c180c8e8656",
                 "shasum": ""
             },
             "require": {
@@ -1106,7 +1106,7 @@
                 "source": "https://github.com/MalaysiaPrayerTimes/provider/tree/master",
                 "issues": "https://github.com/MalaysiaPrayerTimes/provider/issues"
             },
-            "time": "2016-06-11 10:06:12"
+            "time": "2016-06-11 15:21:15"
         },
         {
             "name": "mtdowling/cron-expression",
