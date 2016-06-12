@@ -9,6 +9,7 @@
     ],
     "require": {
         "barryvdh/laravel-ide-helper": "~2.1",
+        "dingo/api": "1.0.*@dev",
         "laravel/framework": "5.2.*",
         "mpt/provider": "dev-master"
     },
