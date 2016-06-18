@@ -25,8 +25,7 @@ class PrayerController extends ApiController
             ->setMonth($request->getMonth())
             ->getTimesByCode($code);
 
-        return $this->response->item($data, new PrayerTransformer())
-            ->setLastModified($data->getLastModified());
+        return $this->produceResponse($request, $data);
     }
 
     public function coordinate(PrayerRequest $request, $lat, $lng)
@@ -36,8 +35,18 @@ class PrayerController extends ApiController
             ->setMonth($request->getMonth())
             ->getTimesByCoordinate($lat, $lng);
 
-        return $this->response->item($data, new PrayerTransformer())
-            ->setLastModified($data->getLastModified());
+        return $this->produceResponse($request, $data);
+    }
+
+    private function produceResponse(PrayerRequest $request, PrayerData $data)
+    {
+        $response = $this->response->item($data, new PrayerTransformer());
+
+        $response->setLastModified($data->getLastModified())
+            ->setEtag(md5($response->getContent()), true)
+            ->isNotModified($request);
+
+        return $response;
     }
 }
 
