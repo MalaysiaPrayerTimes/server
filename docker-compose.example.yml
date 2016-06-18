@@ -1,0 +1,46 @@
+version: '2'
+
+volumes:
+  data:
+
+services:
+
+  mpt-server:
+    build: ./docker/app
+    container_name: mpt-server
+    volumes:
+      - ./:/var/www/mpt:rw
+
+  nginx:
+    build: ./docker/nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - mpt-server
+    links:
+      - php
+
+  php:
+    build: ./docker/php
+    container_name: php7-fpm
+    expose:
+      - "9000"
+    volumes_from:
+      - mpt-server
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
