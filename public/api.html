@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JSON API · Malaysia Prayer Times</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Noorzaini Ilhami">
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Malaysia Prayer Times"/>
+    <meta property="fb:app_id" content="158827044147847"/>
+
+    <link href="css/style.min.css" rel="stylesheet">
+    <link href="css/docs.min.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="ico/mpt.ico">
+    <link rel="apple-touch-icon" sizes="144x144" href="ico/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="ico/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="ico/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon" href="ico/apple-touch-icon-57.png">
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar">
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html"><i class="mptlogo hidden-phone"></i>Malaysia Prayer Times</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              <li><a href="feedback.html"><i class="askicon"></i>Feedback</a></li>
+              <li><a href="https://www.facebook.com/pages/Malaysia-Prayer-Times/369813589710705" title="Malaysia Prayer Times on Facebook"><i class="fbicon"></i>Malaysia Prayer Times</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="span3 sidebar">
+          <ul class="nav nav-list sidenav">
+            <li class="active"><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
+            <li><a href="#parameters"><i class="icon-chevron-right"></i> Parameters</a></li>
+            <li><a href="#response"><i class="icon-chevron-right"></i> Response Fields</a></li>
+            <li><a href="#request"><i class="icon-chevron-right"></i> Request Example</a></li>
+          </ul>
+        </div>
+        <div class="span9">
+          <section id="overview">
+            <div class="page-header">
+              <h1>JSON API</h1>
+              <p class="apiurl">http://mpt.i906.my/mpt.json</p>
+            </div>
+
+            <h3>Overview</h3>
+            <p>Returns a list of current month's prayer times for a specific location.</p>
+          </section>
+          <section id="deprecation">
+            <h3>Deprecration</h3>
+            <p>This API is deprecrated. Use <code>https://mpt.i906.my/api/prayer/&lt;code&gt;</code> or <code>https://mpt.i906.my/api/prayer/&lt;latitude&gt;,&lt;longitude&gt;</code> instead. Also this website should be upgraded soon. Also everything will be open sourced <a href="https://github.com/MalaysiaPrayerTimes">here</a>!</p>
+          </section>
+          <section id="parameters">
+            <h3>Parameters</h3>
+            <p>The parameters are passed using GET method.</p>
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th style="width: 100px">Parameter</th>
+                  <th style="width: 50px">Sample</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>code</td>
+                  <td>kdh-4</td>
+                  <td><strong>Required.</strong> The <a href="code.html">location code</a> or the location name which prayer times to be obtained.</td>
+                </tr>
+                <tr>
+                  <td>filter</td>
+                  <td>3</td>
+                  <td>
+                    <p>One of the values below. If no value is specified, defaults to 3.</p>
+                    <table class="table table-bordered table-striped table-condensed">
+                      <tr>
+                        <td>1</td>
+                        <td>Filters the prayer time to the current day.</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Filters the prayer time to the current week.</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Filters the prayer time to the current month.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>appid</td>
+                  <td>mpt-json-api</td>
+                  <td>Used for statistical purposes. The name of the application using this API.</td>
+                </tr>
+                <tr>
+                  <td>appurl</td>
+                  <td>http://mpt.i906.my</td>
+                  <td>Used for statistical purposes. The url of the application using this API.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>  
+          <section id="response">
+            <h3>Response fields</h3>
+            <h4>meta</h4>
+            <table class="table table-bordered table-striped">
+              <tr>
+                <td>code</td>
+                <td>Returns <code>200</code> if the request was successful. Returns <code>400</code> if any error occurred.</td>
+              </tr>
+              <tr>
+                <td>errorType</td>
+                <td>
+                  <p>Returns one of the values below if there an error occured.</p>
+                  <table class="table table-bordered table-striped table-condensed">
+                    <tr>
+                      <td><code>ERROR_NO_PLACE</code></td>
+                      <td>No place was specified, unknown code was use or the location was not found in the database.</td>
+                    </tr>
+                    <tr>
+                      <td><code>ERROR_ESOLAT</code></td>
+                      <td>No cached prayer time available and an error occurred while connecting to <a href="http://www.esolat.gov.my">www.esolat.gov.my</a>.</td>
+                    </tr>
+                    <tr>
+                      <td><code>ERROR_INVALID_DATA</code></td>
+                      <td>Unexpected response received from <a href="http://www.esolat.gov.my">www.esolat.gov.my</a>.</td>
+                    </tr>
+                    <tr>
+                      <td><code>ERROR_UNKNOWN</code></td>
+                      <td>Unexpected error has occured.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>errorDescription</td>
+                <td>The description of the error that has occured.</td>
+              </tr>
+            </table>
+
+            <h4>response</h4>
+            <table class="table table-bordered table-striped">
+              <tr>
+                <td>times</td>
+                <td>The prayer times formatted in UNIX timestamp.</td>
+              </tr>
+              <tr>
+                <td>place</td>
+                <td>The name of the location.</td>
+              </tr>
+              <tr>
+                <td>code</td>
+                <td>The location code used.</td>
+              </tr>
+              <tr>
+                <td>jakim</td>
+                <td>The code used to retrieve data from <a href="http://www.esolat.gov.my">www.esolat.gov.my</a>.</td>
+              </tr>
+            </table>
+          </section>
+          <section id="request">
+            <h3>Request Example</h3>
+            <p>A sample response from <code><a href="http://mpt.i906.my/mpt.json?code=kdh-4&amp;filter=2">http://mpt.i906.my/mpt.json?code=kdh-4&amp;filter=2</a></code>.</p>
+            <pre class="prettyprint linenums">{
+  &quot;meta&quot;: {
+    &quot;code&quot;: 200
+  },
+  &quot;response&quot;: {
+    &quot;times&quot;: [
+      [
+        1352065560, 1352070180, 1352091840, 1352103840, 1352113200, 1352117460
+      ],
+      [
+        1352151960, 1352156640, 1352178240, 1352190300, 1352199600, 1352203860
+      ],
+      [
+        1352238360, 1352243040, 1352264640, 1352276700, 1352286000, 1352290320
+      ],
+      [
+        1352324760, 1352329440, 1352351040, 1352363100, 1352372400, 1352376720
+      ],
+      [
+        1352411220, 1352415840, 1352437440, 1352449500, 1352458800, 1352463120
+      ],
+      [
+        1352497620, 1352502240, 1352523840, 1352535900, 1352545200, 1352549520
+      ],
+      [
+        1352584020, 1352588700, 1352610240, 1352622300, 1352631600, 1352635920
+      ]
+    ],
+    &quot;place&quot;: &quot;Kubang Pasu&quot;,
+    &quot;code&quot;: &quot;kdh-4&quot;,
+    &quot;jakim&quot;: &quot;kdh02&quot;
+  }
+}</pre>
+          </section>
+        </div>
+      </div>
+
+
+      <hr>
+
+      <footer class="footer">
+        <p>
+          <span class="pull-left cplt">&copy; 2010-2016 <a rel="author" href="https://plus.google.com/103373726825448447741?rel=author">Noorzaini Ilhami</a> (<a href="http://www.i906.com.my/">i906</a>) </span>
+        <span class="pull-right cprt">Prayer times data by <a href="http://www.e-solat.gov.my/">JAKIM</a>.</span>
+        </p>
+      </footer>
+
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.8.1.min.js"><\/script>')</script>
+
+    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>-->
+    <script src="js/locations.js"></script>
+    <script src="js/prettify.js"></script>
+    <script src="js/jquery.mpt.js"></script>
+    <script src="js/ga_social_tracking.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.js"></script>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-3416704-8']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+    <!--<script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+
+  </body>
+</html>
