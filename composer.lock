@@ -1452,12 +1452,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MalaysiaPrayerTimes/provider.git",
-                "reference": "a99c106610a3942ebf341b91b66a3930a51cb54d"
+                "reference": "49cc3e70f6812dc63e66e016727c7e8c88ecd5a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/a99c106610a3942ebf341b91b66a3930a51cb54d",
-                "reference": "a99c106610a3942ebf341b91b66a3930a51cb54d",
+                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/49cc3e70f6812dc63e66e016727c7e8c88ecd5a2",
+                "reference": "49cc3e70f6812dc63e66e016727c7e8c88ecd5a2",
                 "shasum": ""
             },
             "require": {
@@ -1483,7 +1483,7 @@
                 "source": "https://github.com/MalaysiaPrayerTimes/provider/tree/master",
                 "issues": "https://github.com/MalaysiaPrayerTimes/provider/issues"
             },
-            "time": "2016-06-19 06:04:53"
+            "time": "2016-06-19 08:23:49"
         },
         {
             "name": "mtdowling/cron-expression",

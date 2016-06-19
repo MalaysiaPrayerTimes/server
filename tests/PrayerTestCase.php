@@ -3,19 +3,25 @@
 abstract class PrayerTestCase extends TestCase
 {
 
-    protected function getMockedProvider($y = '2016', $m = '6')
+    protected function getMockedProvider($y = null, $m = null)
     {
         $provider = Mockery::mock(\Mpt\Provider::class);
 
-        $provider->shouldReceive('setYear')
-            ->with($y)
-            ->once()
-            ->andReturnSelf();
+        if (!is_null($y)) {
+            $provider->shouldReceive('setYear')
+                ->with($y)
+                ->atLeast()
+                ->once()
+                ->andReturnSelf();
+        }
 
-        $provider->shouldReceive('setMonth')
-            ->with($m)
-            ->once()
-            ->andReturnSelf();
+        if (!is_null($m)) {
+            $provider->shouldReceive('setMonth')
+                ->with($m)
+                ->atLeast()
+                ->once()
+                ->andReturnSelf();
+        }
 
         return $provider;
     }
