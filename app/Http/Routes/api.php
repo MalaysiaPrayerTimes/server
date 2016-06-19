@@ -2,6 +2,14 @@
 
 use Dingo\Api\Routing\Router;
 
+Route::group(['as' => 'api.', 'middleware' => ['api'], 'namespace' => 'Api'], function () {
+
+    // Legacy API
+
+    Route::get('/mpt.json', ['as' => 'legacy', 'uses' => 'LegacyPrayerController@getApi']);
+
+});
+
 /**
  * @var $api \Dingo\Api\Routing\Router
  */
