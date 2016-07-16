@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 class PrayerRequest extends ApiRequest
 {
-
     public function authorize()
     {
         return true;

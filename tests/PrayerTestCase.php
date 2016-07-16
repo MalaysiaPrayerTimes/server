@@ -2,7 +2,6 @@
 
 abstract class PrayerTestCase extends TestCase
 {
-
     protected function getMockedProvider($y = null, $m = null)
     {
         $provider = Mockery::mock(\Mpt\Provider::class);
@@ -29,7 +28,6 @@ abstract class PrayerTestCase extends TestCase
 
 class TestPrayerData extends \Mpt\Providers\Jakim\JakimPrayerData
 {
-
     public function getMonth()
     {
         return 6;
