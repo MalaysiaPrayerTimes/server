@@ -15,7 +15,7 @@ Route::group(['as' => 'api.', 'middleware' => ['api'], 'namespace' => 'Api'], fu
  */
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v2', ['namespace' => 'App\Http\Controllers\Api\V2'], function (Router $api) {
+$api->version('v2', ['middleware' => ['api'], 'namespace' => 'App\Http\Controllers\Api\V2'], function (Router $api) {
 
     $api->get('prayer/{code}', 'PrayerController@code')
         ->where('code', '[a-z]{3}-[0-9]+');

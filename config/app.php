@@ -150,6 +150,8 @@ return [
 
         App\Providers\PrayerServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+        Fideloper\Proxy\TrustedProxyServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
 
         /*
