@@ -11,7 +11,6 @@ use Mpt\Provider;
 
 class LegacyPrayerController extends Controller
 {
-
     const ERROR_ESOLAT = 'ERROR_ESOLAT';
     const ERROR_INVALID_DATA = 'ERROR_INVALID_DATA';
     const ERROR_NO_PLACE = 'ERROR_NO_PLACE';

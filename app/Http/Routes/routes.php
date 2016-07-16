@@ -9,4 +9,3 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/test', ['uses' => 'TestController@index']);
 });
-

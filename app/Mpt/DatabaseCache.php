@@ -9,7 +9,6 @@ use Mpt\Model\PrayerData;
 
 class DatabaseCache implements CacheInterface
 {
-
     private $cache;
     private $db;
 
@@ -78,5 +77,4 @@ class DatabaseCache implements CacheInterface
     {
         return $code . '.' . $year . '.' . $month;
     }
-
 }

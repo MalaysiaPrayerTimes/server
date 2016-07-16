@@ -15,7 +15,6 @@ use Mpt\Provider;
 
 class PrayerController extends ApiController
 {
-
     private $provider;
 
     public function __construct(Provider $provider)

@@ -2,7 +2,6 @@
 
 class LegacyApiTest extends PrayerTestCase
 {
-
     public function testSetParameters()
     {
         $provider = $this->getMockedProvider('2016', '6');
