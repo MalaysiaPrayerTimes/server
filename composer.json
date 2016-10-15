@@ -12,7 +12,7 @@
         "barryvdh/laravel-ide-helper": "~2.1",
         "dingo/api": "1.0.*@dev",
         "fideloper/proxy": "^3.1",
-        "laravel/framework": "5.2.*",
+        "laravel/framework": "5.3.*",
         "mpt/provider": "dev-master"
     },
     "require-dev": {
