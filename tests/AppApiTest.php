@@ -2,7 +2,6 @@
 
 class AppApiTest extends TestCase
 {
-
     public function testGetSupportedCodes()
     {
         $data = [
