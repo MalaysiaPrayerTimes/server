@@ -11,5 +11,6 @@
   composer install --prefer-dist
   php artisan route:cache
   php artisan config:cache
+  php artisan api:cache
   php artisan migrate --force
 @endtask

@@ -29,7 +29,7 @@ before_deploy:
 
 deploy:
   - provider: script
-    script: php vendor/bin/envoy run deploy
+    script: php vendor/bin/envoy -q run deploy
     skip_cleanup: true
     on:
       branch: master
