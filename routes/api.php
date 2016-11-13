@@ -10,7 +10,7 @@ Route::group(['as' => 'api.', 'middleware' => ['api'], 'namespace' => 'Api'], fu
 });
 
 /**
- * @var $api \Dingo\Api\Routing\Router
+ * @var \Dingo\Api\Routing\Router
  */
 $api = app('Dingo\Api\Routing\Router');
 
