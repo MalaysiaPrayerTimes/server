@@ -20,6 +20,15 @@ class AppApiTest extends TestCase
 
         $this->get('/api/app/codes')
             ->assertResponseOk()
+            ->seeJsonStructure([
+                '*' => [
+                    'provider',
+                    'codes',
+                ],
+            ])
+            ->seeJson([
+                'provider' => 'test',
+            ])
             ->seeJson([
                 'code' => 'code',
                 'city' => 'city',

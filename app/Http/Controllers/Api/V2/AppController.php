@@ -22,19 +22,22 @@ class AppController extends ApiController
         $codes = collect($data);
 
         $codes->transform(function ($item, $key) {
-            return collect($item)
-                ->transform(function (PrayerCode $item, $key) {
-                    return [
-                        'code' => $item->getCode(),
-                        'city' => $item->getCity(),
-                        'state' => $item->getState(),
-                        'country' => $item->getCountry(),
-                    ];
-                });
+            return [
+                'provider' => $key,
+                'codes' => collect($item)
+                    ->transform(function (PrayerCode $item, $key) {
+                        return [
+                            'code' => $item->getCode(),
+                            'city' => $item->getCity(),
+                            'state' => $item->getState(),
+                            'country' => $item->getCountry(),
+                        ];
+                    })
+            ];
         });
 
         $response = response()
-            ->json($codes);
+            ->json($codes->values()->all());
 
         $response->setEtag(md5($response->getContent()), true);
 
