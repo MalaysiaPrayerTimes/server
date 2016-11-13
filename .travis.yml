@@ -11,3 +11,20 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+addons:
+  ssh_known_hosts: mpt.i906.my
+
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_0b8d9e1424d0_key -iv $encrypted_0b8d9e1424d0_iv -in secure.tar.enc -out secure.tar -d
+  - tar xvf secure.tar
+  - eval "$(ssh-agent -s)"
+  - chmod 600 /tmp/envoy_rsa
+  - ssh-add /tmp/envoy_rsa
+
+deploy:
+  - provider: script
+    script: php vendor/bin/envoy run deploy
+    skip_cleanup: true
+    on:
+      branch: master
