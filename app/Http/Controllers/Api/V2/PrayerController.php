@@ -16,10 +16,12 @@ use Mpt\Provider;
 class PrayerController extends ApiController
 {
     private $provider;
+    private $sentry;
 
     public function __construct(Provider $provider)
     {
         $this->provider = $provider;
+        $this->sentry = app('sentry');
     }
 
     public function code(PrayerRequest $request, $code)
@@ -56,6 +58,9 @@ class PrayerController extends ApiController
 
             return $this->produceResponse($request, $data);
         } catch (DataNotAvailableException $e) {
+            $this->sentry->captureMessage('Unsupported coordinates %s,%s', [$lat, $lng], [
+                'extra' => ['coordinates' => "$lat,$lng"]
+            ]);
             $this->response->errorNotFound("No provider support found for coordinate ($lat, $lng).");
         } catch (InvalidDataException $e) {
             $this->response->error($e->getMessage(), 502);
