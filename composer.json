@@ -13,7 +13,8 @@
         "dingo/api": "1.0.*@dev",
         "fideloper/proxy": "^3.1",
         "laravel/framework": "5.3.*",
-        "mpt/provider": "dev-master"
+        "mpt/provider": "dev-master",
+        "sentry/sentry-laravel": "^0.4.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
