@@ -8,6 +8,7 @@
 @task('deploy')
   cd {{ $home }}
   git pull origin master
+  php artisan clear-compiled
   composer install --prefer-dist
   php artisan route:cache
   php artisan config:cache
