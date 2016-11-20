@@ -92,6 +92,7 @@ class PrayerTransformer extends TransformerAbstract
             'year' => $p->getYear(),
             'month' => $p->getMonth(),
             'place' => $p->getPlace(),
+            'attributes' => $p->getExtraAttributes(),
             'times' => $p->getTimes(),
         ];
     }

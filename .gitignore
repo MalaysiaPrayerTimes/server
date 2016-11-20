@@ -100,3 +100,5 @@ Temporary Items
 .phpstorm.meta.php
 _ide_helper.php
 docker-compose.yml
+envoy_rsa
+secure.tar
