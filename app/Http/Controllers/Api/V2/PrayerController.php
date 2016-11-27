@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\PrayerRequest;
-use League\Fractal\TransformerAbstract;
 use Mpt\Exception\ConnectException;
 use Mpt\Exception\DataNotAvailableException;
 use Mpt\Exception\InvalidCodeException;
@@ -58,9 +57,15 @@ class PrayerController extends ApiController
 
             return $this->produceResponse($request, $data);
         } catch (DataNotAvailableException $e) {
-            $this->sentry->captureMessage('Unsupported coordinates %s,%s', [$lat, $lng], [
-                'extra' => ['coordinates' => "$lat,$lng"]
+            $locations = implode(',', $e->getPotentialLocations());
+dd($locations);
+            $this->sentry->captureMessage('Unsupported coordinates %s (%s,%s)', [$locations, $lat, $lng], [
+                'extra' => [
+                    'coordinates' => "$lat,$lng",
+                    'locations' => implode(',', $e->getPotentialLocations()),
+                ]
             ]);
+
             $this->response->errorNotFound("No provider support found for coordinate ($lat, $lng).");
         } catch (InvalidDataException $e) {
             $this->response->error($e->getMessage(), 502);
@@ -84,21 +89,5 @@ class PrayerController extends ApiController
             ->isNotModified($request);
 
         return $response;
-    }
-}
-
-class PrayerTransformer extends TransformerAbstract
-{
-    public function transform(PrayerData $p)
-    {
-        return [
-            'provider' => $p->getProviderName(),
-            'code' => $p->getCode(),
-            'year' => $p->getYear(),
-            'month' => $p->getMonth(),
-            'place' => $p->getPlace(),
-            'attributes' => $p->getExtraAttributes(),
-            'times' => $p->getTimes(),
-        ];
     }
 }
