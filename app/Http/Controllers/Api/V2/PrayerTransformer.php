@@ -7,7 +7,6 @@ use Mpt\Model\PrayerData;
 
 class PrayerTransformer extends TransformerAbstract
 {
-
     public function transform(PrayerData $p)
     {
         return [
