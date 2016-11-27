@@ -40,8 +40,6 @@ class PrayerController extends ApiController
             $this->response->error($e->getMessage(), 504);
         } catch (ProviderException $e) {
             $this->response->error('Error occured in provider: ' . $e->getMessage(), 500);
-        } catch (\Exception $e) {
-            $this->response->error($e->getMessage(), 500);
         }
 
         return $this->response->noContent();
@@ -58,7 +56,7 @@ class PrayerController extends ApiController
             return $this->produceResponse($request, $data);
         } catch (DataNotAvailableException $e) {
             $locations = implode(',', $e->getPotentialLocations());
-dd($locations);
+
             $this->sentry->captureMessage('Unsupported coordinates %s (%s,%s)', [$locations, $lat, $lng], [
                 'extra' => [
                     'coordinates' => "$lat,$lng",
@@ -73,8 +71,6 @@ dd($locations);
             $this->response->error($e->getMessage(), 504);
         } catch (ProviderException $e) {
             $this->response->error('Error occured in provider: ' . $e->getMessage(), 500);
-        } catch (\Exception $e) {
-            $this->response->error($e->getMessage(), 500);
         }
 
         return $this->response->noContent();
