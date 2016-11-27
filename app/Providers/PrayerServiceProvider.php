@@ -17,6 +17,7 @@ use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
 use Mpt\DatabaseCache;
 use Mpt\Provider;
 use Mpt\Providers\Jakim\JakimProvider;
+use Mpt\Providers\Muis\MuisProvider;
 
 class PrayerServiceProvider extends ServiceProvider
 {
@@ -64,9 +65,11 @@ class PrayerServiceProvider extends ServiceProvider
             ]);
 
             $jp = new JakimProvider($geocoder, $goutte);
+            $mp = new MuisProvider($geocoder);
 
             $provider = new Provider();
             $provider->registerPrayerTimeProvider($jp);
+            $provider->registerPrayerTimeProvider($mp);
             $provider->setCache($cache);
 
             return $provider;
