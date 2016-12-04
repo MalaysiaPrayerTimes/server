@@ -61,7 +61,7 @@ class PrayerServiceProvider extends ServiceProvider
             $adapter = new Guzzle6HttpAdapter($guzzle);
 
             $geocoder->registerProviders([
-                new GoogleMaps($adapter, null, null, true, env('MAPS_API_KEY')),
+                new GoogleMaps($adapter, null, null, true, config('app.maps_api_key')),
             ]);
 
             $jp = new JakimProvider($geocoder, $goutte);
