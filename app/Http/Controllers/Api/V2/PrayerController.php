@@ -15,12 +15,10 @@ use Mpt\Provider;
 class PrayerController extends ApiController
 {
     private $provider;
-    private $sentry;
 
     public function __construct(Provider $provider)
     {
         $this->provider = $provider;
-        $this->sentry = app('sentry');
     }
 
     public function code(PrayerRequest $request, $code)
@@ -39,7 +37,7 @@ class PrayerController extends ApiController
         } catch (ConnectException $e) {
             $this->response->error($e->getMessage(), 504);
         } catch (ProviderException $e) {
-            $this->response->error('Error occured in provider: ' . $e->getMessage(), 500);
+            $this->response->error('Error occurred in provider: ' . $e->getMessage(), 500);
         }
 
         return $this->response->noContent();
@@ -55,22 +53,13 @@ class PrayerController extends ApiController
 
             return $this->produceResponse($request, $data);
         } catch (DataNotAvailableException $e) {
-            $locations = implode(',', $e->getPotentialLocations());
-
-            $this->sentry->captureMessage('Unsupported coordinates %s (%s,%s)', [$locations, $lat, $lng], [
-                'extra' => [
-                    'coordinates' => "$lat,$lng",
-                    'locations' => implode(',', $e->getPotentialLocations()),
-                ]
-            ]);
-
             $this->response->errorNotFound("No provider support found for coordinate ($lat, $lng).");
         } catch (InvalidDataException $e) {
             $this->response->error($e->getMessage(), 502);
         } catch (ConnectException $e) {
             $this->response->error($e->getMessage(), 504);
         } catch (ProviderException $e) {
-            $this->response->error('Error occured in provider: ' . $e->getMessage(), 500);
+            $this->response->error('Error occurred in provider: ' . $e->getMessage(), 500);
         }
 
         return $this->response->noContent();

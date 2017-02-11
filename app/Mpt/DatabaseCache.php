@@ -6,6 +6,7 @@ use Illuminate\Cache\Repository;
 use Illuminate\Database\Connection;
 use Mpt\Model\LocationCache;
 use Mpt\Model\PrayerData;
+use Mpt\Model\UnsupportedLocationCache;
 
 class DatabaseCache implements CacheInterface
 {
@@ -32,6 +33,17 @@ class DatabaseCache implements CacheInterface
         $this->cache->forever($this->getCacheId($data->getCode(), $data->getYear(), $data->getMonth()), $data);
     }
 
+    private function getDistanceColumn($lat, $lng)
+    {
+        return "6371 * acos(" .
+            "cos(radians($lat)) * " .
+            "cos(radians(`lat`)) * " .
+            "cos(radians(`lng`) - radians($lng)) + " .
+            "sin(radians($lat)) * " .
+            "sin(radians(`lat`))" .
+            ") AS distance";
+    }
+
     /**
      * Probably better to use redis 3.2.0 for this
      *
@@ -42,18 +54,13 @@ class DatabaseCache implements CacheInterface
      */
     public function getCodeByLocation($lat, $lng, $radius = 5)
     {
-        $distance = "6371 * acos(" .
-            "cos(radians($lat)) * " .
-            "cos(radians(lat)) * " .
-            "cos(radians(lng) - radians($lng)) + " .
-            "sin(radians($lat)) * " .
-            "sin(radians(lat))" .
-            ") AS distance";
+        $distance = $this->getDistanceColumn($lat, $lng);
 
         $r = $this->db->table('location_cache')
             ->select()
             ->selectRaw($distance)
             ->having('distance', '<', $radius)
+            ->orderBy('distance')
             ->first();
 
         if (!is_null($r)) {
@@ -76,5 +83,39 @@ class DatabaseCache implements CacheInterface
     private function getCacheId($code, $year, $month): string
     {
         return $code . '.' . $year . '.' . $month;
+    }
+
+    /**
+     * @param $lat
+     * @param $lng
+     * @param int $radius
+     * @return UnsupportedLocationCache|null
+     */
+    public function getNearestUnsupportedLocation($lat, $lng, $radius = 50)
+    {
+        $distance = $this->getDistanceColumn($lat, $lng);
+
+        $r = $this->db->table('unsupported_location_cache')
+            ->select()
+            ->selectRaw($distance)
+            ->having('distance', '<', $radius)
+            ->orderBy('distance')
+            ->first();
+
+        if (!is_null($r)) {
+            return new UnsupportedLocationCache($r->lat, $r->lng, json_decode($r->locations));
+        } else {
+            return null;
+        }
+    }
+
+    public function cacheUnsupportedLocation(UnsupportedLocationCache $location)
+    {
+        $this->db->table('unsupported_location_cache')
+            ->insert([
+                'lat' => $location->lat,
+                'lng' => $location->lng,
+                'locations' => json_encode($location->locations)
+            ]);
     }
 }
