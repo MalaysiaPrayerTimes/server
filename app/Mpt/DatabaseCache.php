@@ -35,13 +35,13 @@ class DatabaseCache implements CacheInterface
 
     private function getDistanceColumn($lat, $lng)
     {
-        return "6371 * acos(" .
+        return "IFNULL(6371 * acos(" .
             "cos(radians($lat)) * " .
             "cos(radians(`lat`)) * " .
             "cos(radians(`lng`) - radians($lng)) + " .
             "sin(radians($lat)) * " .
             "sin(radians(`lat`))" .
-            ") AS distance";
+            "), 0) AS distance";
     }
 
     /**
