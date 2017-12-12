@@ -1513,12 +1513,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MalaysiaPrayerTimes/provider-muis.git",
-                "reference": "baf93bd9ebb83d9afb2d363ce75b56ca4548746f"
+                "reference": "e8952f49141c5f96798e1fec8fc941fe7743f90a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider-muis/zipball/baf93bd9ebb83d9afb2d363ce75b56ca4548746f",
-                "reference": "baf93bd9ebb83d9afb2d363ce75b56ca4548746f",
+                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider-muis/zipball/e8952f49141c5f96798e1fec8fc941fe7743f90a",
+                "reference": "e8952f49141c5f96798e1fec8fc941fe7743f90a",
                 "shasum": ""
             },
             "require": {
@@ -1543,7 +1543,7 @@
                 "source": "https://github.com/MalaysiaPrayerTimes/provider-muis/tree/master",
                 "issues": "https://github.com/MalaysiaPrayerTimes/provider-muis/issues"
             },
-            "time": "2017-12-02T17:46:26+00:00"
+            "time": "2017-12-12T03:46:10+00:00"
         },
         {
             "name": "mtdowling/cron-expression",
