@@ -1525,12 +1525,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MalaysiaPrayerTimes/provider.git",
-                "reference": "d8fc4de1e6f4a9ccb2f3fd3eeb7cffdf5f8773bd"
+                "reference": "d5770b19ff4872b7724888cb376f7b792c6a57e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/d8fc4de1e6f4a9ccb2f3fd3eeb7cffdf5f8773bd",
-                "reference": "d8fc4de1e6f4a9ccb2f3fd3eeb7cffdf5f8773bd",
+                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/d5770b19ff4872b7724888cb376f7b792c6a57e8",
+                "reference": "d5770b19ff4872b7724888cb376f7b792c6a57e8",
                 "shasum": ""
             },
             "require": {
@@ -1556,7 +1556,7 @@
                 "source": "https://github.com/MalaysiaPrayerTimes/provider/tree/master",
                 "issues": "https://github.com/MalaysiaPrayerTimes/provider/issues"
             },
-            "time": "2018-02-19T13:47:45+00:00"
+            "time": "2018-02-25T11:31:34+00:00"
         },
         {
             "name": "mpt/provider-muis",
