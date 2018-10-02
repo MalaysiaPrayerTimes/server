@@ -4,9 +4,10 @@ namespace App\Providers;
 
 use Geocoder\Provider\GoogleMaps;
 use Geocoder\ProviderAggregator;
-use Goutte\Client as GoutteClient;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
+use Http\Discovery\HttpClientDiscovery;
+use Http\Discovery\MessageFactoryDiscovery;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +17,7 @@ use Kevinrob\GuzzleCache\Storage\LaravelCacheStorage;
 use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
 use Mpt\DatabaseCache;
 use Mpt\Provider;
-use Mpt\Providers\Jakim\JakimProvider;
+use Mpt\Providers\Jakim\YiiJakimProvider;
 use Mpt\Providers\Muis\MuisProvider;
 
 class PrayerServiceProvider extends ServiceProvider
@@ -54,9 +55,6 @@ class PrayerServiceProvider extends ServiceProvider
 
             $geocoder = new ProviderAggregator();
 
-            $goutte = new GoutteClient();
-            $goutte->setClient($guzzle);
-
             $cache = $app->make(DatabaseCache::class);
             $adapter = new Guzzle6HttpAdapter($guzzle);
 
@@ -64,7 +62,10 @@ class PrayerServiceProvider extends ServiceProvider
                 new GoogleMaps($adapter, null, null, true, config('app.maps_api_key')),
             ]);
 
-            $jp = new JakimProvider($geocoder, $goutte);
+            $httpClient = HttpClientDiscovery::find();
+            $requestFactory = MessageFactoryDiscovery::find();
+
+            $jp = new YiiJakimProvider($geocoder, $httpClient, $requestFactory);
             $mp = new MuisProvider($geocoder);
 
             $provider = new Provider();

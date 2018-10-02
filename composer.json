@@ -16,10 +16,11 @@
         "dingo/api": "1.0.*@dev",
         "fideloper/proxy": "^3.1",
         "laravel/framework": "5.3.*",
-        "mpt/provider": "dev-master",
-        "mpt/provider-muis": "dev-master",
+        "mpt/provider": "^1.1",
+        "mpt/provider-muis": "^1.0",
         "kevinrob/guzzle-cache-middleware": "^1.4",
-        "sentry/sentry-laravel": "^0.6.1"
+        "sentry/sentry-laravel": "^0.6.1",
+        "php-http/guzzle6-adapter": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "~2.2",
@@ -67,6 +68,7 @@
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }
