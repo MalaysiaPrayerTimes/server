@@ -1572,16 +1572,16 @@
         },
         {
             "name": "mpt/provider",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MalaysiaPrayerTimes/provider.git",
-                "reference": "87fb3736bd6ed02191e114a25f95dd5115c8e7d6"
+                "reference": "19f64bdadb270cb1390d76b050ebd120b7494ee4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/87fb3736bd6ed02191e114a25f95dd5115c8e7d6",
-                "reference": "87fb3736bd6ed02191e114a25f95dd5115c8e7d6",
+                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/19f64bdadb270cb1390d76b050ebd120b7494ee4",
+                "reference": "19f64bdadb270cb1390d76b050ebd120b7494ee4",
                 "shasum": ""
             },
             "require": {
@@ -1618,10 +1618,10 @@
             ],
             "description": "Library for parsing JAKIM prayer data",
             "support": {
-                "source": "https://github.com/MalaysiaPrayerTimes/provider/tree/1.1.0",
+                "source": "https://github.com/MalaysiaPrayerTimes/provider/tree/1.1.1",
                 "issues": "https://github.com/MalaysiaPrayerTimes/provider/issues"
             },
-            "time": "2018-10-02T14:27:48+00:00"
+            "time": "2018-10-10T10:42:13+00:00"
         },
         {
             "name": "mpt/provider-muis",
@@ -1869,16 +1869,16 @@
         },
         {
             "name": "php-http/client-common",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/client-common.git",
-                "reference": "949ee8a8cba5fa2abe839c87bf7b885ac3330589"
+                "reference": "0b9ce659aa46aee106f8c66597ea0c070fcd9dff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/client-common/zipball/949ee8a8cba5fa2abe839c87bf7b885ac3330589",
-                "reference": "949ee8a8cba5fa2abe839c87bf7b885ac3330589",
+                "url": "https://api.github.com/repos/php-http/client-common/zipball/0b9ce659aa46aee106f8c66597ea0c070fcd9dff",
+                "reference": "0b9ce659aa46aee106f8c66597ea0c070fcd9dff",
                 "shasum": ""
             },
             "require": {
@@ -1926,7 +1926,7 @@
                 "http",
                 "httplug"
             ],
-            "time": "2018-06-22T12:36:17+00:00"
+            "time": "2018-10-09T06:46:29+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -2849,7 +2849,7 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v3.4.16",
+            "version": "v3.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
@@ -3133,7 +3133,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.4.16",
+            "version": "v3.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3380,7 +3380,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.1.5",
+            "version": "v4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
@@ -5585,16 +5585,16 @@
         },
         {
             "name": "symfony/class-loader",
-            "version": "v3.4.16",
+            "version": "v3.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/class-loader.git",
-                "reference": "31db283fc86d3143e7ff87e922177b457d909c30"
+                "reference": "f31333bdff54c7595f834d510a6d2325573ddb36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/class-loader/zipball/31db283fc86d3143e7ff87e922177b457d909c30",
-                "reference": "31db283fc86d3143e7ff87e922177b457d909c30",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/f31333bdff54c7595f834d510a6d2325573ddb36",
+                "reference": "f31333bdff54c7595f834d510a6d2325573ddb36",
                 "shasum": ""
             },
             "require": {
@@ -5637,7 +5637,7 @@
             ],
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:19:56+00:00"
+            "time": "2018-10-02T12:28:39+00:00"
         },
         {
             "name": "symfony/yaml",
