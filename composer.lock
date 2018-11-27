@@ -1572,16 +1572,16 @@
         },
         {
             "name": "mpt/provider",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MalaysiaPrayerTimes/provider.git",
-                "reference": "19f64bdadb270cb1390d76b050ebd120b7494ee4"
+                "reference": "4066662407e283731608b2734df8a9ae477364d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/19f64bdadb270cb1390d76b050ebd120b7494ee4",
-                "reference": "19f64bdadb270cb1390d76b050ebd120b7494ee4",
+                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider/zipball/4066662407e283731608b2734df8a9ae477364d8",
+                "reference": "4066662407e283731608b2734df8a9ae477364d8",
                 "shasum": ""
             },
             "require": {
@@ -1618,10 +1618,10 @@
             ],
             "description": "Library for parsing JAKIM prayer data",
             "support": {
-                "source": "https://github.com/MalaysiaPrayerTimes/provider/tree/1.1.1",
+                "source": "https://github.com/MalaysiaPrayerTimes/provider/tree/1.1.2",
                 "issues": "https://github.com/MalaysiaPrayerTimes/provider/issues"
             },
-            "time": "2018-10-10T10:42:13+00:00"
+            "time": "2018-11-27T09:51:14+00:00"
         },
         {
             "name": "mpt/provider-muis",
