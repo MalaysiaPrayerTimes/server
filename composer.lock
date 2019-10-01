@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "85e72a63fbf4fd1a39f2c700184982df",
@@ -1625,16 +1625,16 @@
         },
         {
             "name": "mpt/provider-muis",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MalaysiaPrayerTimes/provider-muis.git",
-                "reference": "c1efa607d14b79228114e41ce989e075a44c2262"
+                "reference": "b081f44031a54e9cf4f8471df0c0c96085b1a40f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider-muis/zipball/c1efa607d14b79228114e41ce989e075a44c2262",
-                "reference": "c1efa607d14b79228114e41ce989e075a44c2262",
+                "url": "https://api.github.com/repos/MalaysiaPrayerTimes/provider-muis/zipball/b081f44031a54e9cf4f8471df0c0c96085b1a40f",
+                "reference": "b081f44031a54e9cf4f8471df0c0c96085b1a40f",
                 "shasum": ""
             },
             "require": {
@@ -1663,10 +1663,10 @@
             ],
             "description": "Library for returning MUIS prayer data",
             "support": {
-                "source": "https://github.com/MalaysiaPrayerTimes/provider-muis/tree/1.0.4",
+                "source": "https://github.com/MalaysiaPrayerTimes/provider-muis/tree/1.0.5",
                 "issues": "https://github.com/MalaysiaPrayerTimes/provider-muis/issues"
             },
-            "time": "2018-10-02T14:37:30+00:00"
+            "time": "2019-10-01T10:27:59+00:00"
         },
         {
             "name": "mtdowling/cron-expression",
